@@ -7,17 +7,12 @@
 // @include       *
 // ==/UserScript==
 
-function EmbedCodeOnPage(kode) {
-    var elm = document.createElement('script');
-    elm.textContent = kode;
-    document.head.appendChild(elm);
+function EmbedFunctionContentsOnPage(func) {
+    var script_tag = document.createElement('script'),
+        fs = func.toString();
+    script_tag.textContent = fs.substring(fs.indexOf("{") + 1, fs.lastIndexOf("}"));
+    document.head.appendChild(script_tag);
 }
-
-function EmbedFunctionContentsOnPage(function_contents) {
-	console.log( function_contents.toString() );
-    EmbedCodeOnPage(function_contents.toString());
-}
-
 EmbedFunctionContentsOnPage(function() { /* set to true for debugging */
     var display_on_page_load = false,
         /* minmum of 0.5 minutes */
@@ -132,5 +127,8 @@ EmbedFunctionContentsOnPage(function() { /* set to true for debugging */
             runloop(display_on_page_load);
         }
     }
-	jsonp("http://api.askubuntu.com/1.1/stats?jsonp=main");
+
+    (function() {
+        jsonp("http://api.askubuntu.com/1.1/stats?jsonp=main");
+    }());
 });
