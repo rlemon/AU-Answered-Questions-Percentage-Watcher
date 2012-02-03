@@ -47,7 +47,7 @@ embed_function_contents_on_page(function() {
 		script_tag.src = url;
 		document.body.appendChild(script_tag);
 	}
-	var create_cookie = function(name, value, minutes) {
+	function create_cookie(name, value, minutes) {
 		var expires;
 		if (minutes) {
 			var date = new Date();
@@ -58,7 +58,7 @@ embed_function_contents_on_page(function() {
 		}
 		document.cookie = name + '=' + value + expires + '; path=/';
 	};
-	var read_cookie = function(name) {
+	function read_cookie(name) {
 		var name_eq = name + '=';
 		var ca = document.cookie.split(';');
 		for (var i = 0; i < ca.length; i++) {
