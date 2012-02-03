@@ -17,7 +17,12 @@ function EmbedFunctionOnPageAndExecute(fn) {
     EmbedCodeOnPage("(" + fn.toString() + ")()");
 }
 
-EmbedCodeOnPage(function() {
+function EmbedFunctionOnPage(function_name, function_contents)
+{
+    EmbedCodeOnPage(function_contents.toString().replace(/function ?/, 'function ' + function_name));
+}
+
+EmbedFunctionOnPage(function() {
 		/* set to true for debugging */
     var display_on_page_load = false,
         /* minmum of 0.5 minutes */
@@ -134,7 +139,7 @@ EmbedCodeOnPage(function() {
     }
 
 });
-EmbedFunctionOnPageAndExecute( function() {
+EmbedFunctionOnPageAndExecute(function() {
 	jsonp("http://api.askubuntu.com/1.1/stats?jsonp=main");
 });
 
