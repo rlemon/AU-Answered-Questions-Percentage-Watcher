@@ -13,17 +13,12 @@ function EmbedCodeOnPage(kode) {
     document.head.appendChild(elm);
 }
 
-function EmbedFunctionOnPageAndExecute(fn) {
-    EmbedCodeOnPage("(" + fn.toString() + ")()");
-}
-
-function EmbedFunctionContentsOnPage(function_contents)
-{
+function EmbedFunctionContentsOnPage(function_contents) {
+	console.log( function_contents.toString() );
     EmbedCodeOnPage(function_contents.toString());
 }
 
-EmbedFunctionContentsOnPage(function() {
-		/* set to true for debugging */
+EmbedFunctionContentsOnPage(function() { /* set to true for debugging */
     var display_on_page_load = false,
         /* minmum of 0.5 minutes */
         timeout_in_minutes = 5,
@@ -137,9 +132,5 @@ EmbedFunctionContentsOnPage(function() {
             runloop(display_on_page_load);
         }
     }
-
-});
-EmbedFunctionOnPageAndExecute(function() {
 	jsonp("http://api.askubuntu.com/1.1/stats?jsonp=main");
 });
-
