@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name          AU Answered Questions Percentage Watcher
 // @author        rlemon
-// @version       0.3.1
+// @version       0.3.2
 // @namespace     rlemon.com
 // @description   Gives you periodic updates as to the Percentage of answered questions on Ask Ubuntu
-// @include       *
+// @include       http://*   
+// @exclude       https://*
 // ==/UserScript==
 
 function embed_function_contents_on_page(func) {
