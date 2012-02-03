@@ -17,12 +17,12 @@ function EmbedFunctionOnPageAndExecute(fn) {
     EmbedCodeOnPage("(" + fn.toString() + ")()");
 }
 
-function EmbedFunctionOnPage(function_name, function_contents)
+function EmbedFunctionContentsOnPage(function_contents)
 {
-    EmbedCodeOnPage(function_contents.toString().replace(/function ?/, 'function ' + function_name));
+    EmbedCodeOnPage(function_contents.toString());
 }
 
-EmbedFunctionOnPage(function() {
+EmbedFunctionContentsOnPage(function() {
 		/* set to true for debugging */
     var display_on_page_load = false,
         /* minmum of 0.5 minutes */
